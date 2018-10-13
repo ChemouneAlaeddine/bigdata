@@ -1,6 +1,5 @@
 //=====================================================================
 /**
-
 * Squelette minimal d'une application Hadoop
 * A exporter dans un jar sans les librairies externes
 * A exécuter avec la commande ./hadoop jar NOMDUFICHER.jar ARGUMENTS....
@@ -31,12 +30,14 @@ public class MonApplication {
 
 			//String localInputPath = args[0];
 			//Path outputPath = new Path(args[0]);// ARGUMENT FOR OUTPUT_LOCATION
-			Path outputPath = (Path) Paths.get(URI.create("hdfs://localhost:9000/achemoune/file.txt"));
-			
+			//Path outputPath = (Path) Paths.get(URI.create("hdfs://localhost:9000/achemoune/file.txt"));
+			Path outputPath = new Path("hdfs://localhost:9000/achemoune/file.txt");
+
 			Configuration conf = getConf();
 			FileSystem fs = FileSystem.get(conf);
+
 			OutputStream os = fs.create(outputPath);
-			InputStream is = new BufferedInputStream(new FileInputStream("/home/chemoune/code/java_programs/coc.txt"));//Data set is getting copied into input stream through buffer mechanism.
+			InputStream is = new BufferedInputStream(new FileInputStream("/home/chemoune/Bureau/bigdata/coc.txt"));//Data set is getting copied into input stream through buffer mechanism.
 			IOUtils.copyBytes(is, os, conf); // Copying the dataset from input stream to output stream
 			
 			//CODE DE VOTRE PROGRAMME ICI
@@ -45,9 +46,20 @@ public class MonApplication {
 	}
 	
 	public static void main( String[] args ) throws Exception {
+		
 		int returnCode = ToolRunner.run(new MonApplication.MonProg(), args);
 		System.exit(returnCode);
+
+		//===================================
+
+		/*System.out.println("Hello World");
+		String localPath = "/home/chemoune/Bureau/bigdata/coc.txt";
+		String uri = "hdfs://localhost:9000";
+		String hdfsDir = "hdfs://localhost:9000/achemoune";
+		
+		Configuration conf = new Configuration();
+		FileSystem fs = FileSystem.get(URI.create(uri), conf);
+		
+		fs.copyFromLocalFile(new Path(localPath), new Path(hdfsDir));*/
 	}
 }
-//=====================================================================
-
