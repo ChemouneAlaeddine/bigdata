@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.StringTokenizer;
+
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
@@ -17,25 +18,30 @@ public class TP3 {
        extends Mapper<Object, Text, Text, IntWritable>{
 	  
 	  private final static IntWritable one = new IntWritable(1);
+	  private final static IntWritable zero = new IntWritable(0);
 	  private Text word = new Text();
 	  
 	  public void map(Object key, Text value, Context context
 			  ) throws IOException, InterruptedException {
-		  String tokens[] = value.toString().split("\n");
 		  
-		  //StringTokenizer itr = new StringTokenizer(value.toString());
-	      /*while (itr.hasMoreTokens()) {
-	        word.set(itr.nextToken());
-	        context.write(word, one);
-	      }*/
-		  for(int i=0; i<tokens.length; i++) {
-			  if(tokens[i].indexOf(",,") == -1) {
-				  word.set(tokens[i]);
-			      context.write(word, one);
-			  }
+		  StringTokenizer itr = new StringTokenizer(value.toString(),"\n");
+		  
+		  while (itr.hasMoreTokens()) {
+			  String ville = itr.nextToken();
+			  String prop_ville[] = ville.split(",");
+			  if(prop_ville[1] != null)
+				  context.getCounter("WPC", "nb_cities").increment(1);
+			  
+			  word.set(ville);
+			  if(ville.indexOf(",,") == -1) {
+				  context.getCounter("WPC", "nb_pop").increment(1);
+				  if(!prop_ville[4].equals("Population"))
+					  context.getCounter("WPC", "total_pop").increment(Long.parseLong(prop_ville[4]));
+				  context.write(word, one);
+			  }else
+				  context.write(word, zero);
 		  }
 	  }
-	  
   }
   public static class TP3Reducer
        extends Reducer<Text,IntWritable,Text,IntWritable> {
@@ -45,15 +51,14 @@ public class TP3 {
 	  public void reduce(Text key, Iterable<IntWritable> values,
                        Context context
                        ) throws IOException, InterruptedException {
-		  /*int sum = 0;
 	      for (IntWritable val : values) {
-	        sum += val.get();
+	        result.set(val.get());
+	        if(result.get() == 1)
+	        	context.write(key, null);
 	      }
-	      result.set(sum);*/
-	      context.write(key, result);
-    }
-    
+	  }
   }
+	  
   public static void main(String[] args) throws Exception {
     Configuration conf = new Configuration();
     Job job = Job.getInstance(conf, "TP3");
