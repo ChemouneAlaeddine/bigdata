@@ -20,14 +20,8 @@ public class TP3 {
 	  
 	  private final static IntWritable one = new IntWritable(1);
 
-	  private Text dix = new Text("10");
-	  private Text cent = new Text("100");
-	  private Text mille = new Text("1000");
-	  private Text dix_mille = new Text("10000");
-	  private Text cent_mille = new Text("100000");
-	  private Text million = new Text("1000000");
-	  private Text dix_million = new Text("10000000");
-	  private Text cent_million = new Text("100000000");
+	  
+	  private Text nombre = new Text();
 	  
 	  public void map(Object key, Text value, Context context
 			  ) throws IOException, InterruptedException {
@@ -40,30 +34,15 @@ public class TP3 {
 			  
 			  if(ville.indexOf(",,") == -1) {
 				  if(!prop_ville[4].equals("Population")) {
-					  int valeur = (int)/*Math.log(*/Long.parseLong(prop_ville[4]/*)*/);
-					  if(valeur < 10)
-						  context.write(dix, new IntWritable((int)Long.parseLong(prop_ville[4])));
-					  if(valeur >= 10 && valeur < 100)
-						  context.write(cent, new IntWritable((int)Long.parseLong(prop_ville[4])));
-					  if(valeur >= 100 && valeur < 1000)
-						  context.write(mille, new IntWritable((int)Long.parseLong(prop_ville[4])));
-					  if(valeur >= 1000 && valeur < 10000)
-						  context.write(dix_mille, new IntWritable((int)Long.parseLong(prop_ville[4])));
-					  if(valeur >= 10000 && valeur < 100000)
-						  context.write(cent_mille, new IntWritable((int)Long.parseLong(prop_ville[4])));
-					  if(valeur >= 100000 && valeur < 1000000)
-						  context.write(million, new IntWritable((int)Long.parseLong(prop_ville[4])));
-					  if(valeur >= 1000000 && valeur < 10000000)
-						  context.write(dix_million, new IntWritable((int)Long.parseLong(prop_ville[4])));
-					  if(valeur >= 10000000)
-						  context.write(cent_million, new IntWritable((int)Long.parseLong(prop_ville[4])));
+					  nombre = new Text(String.valueOf( (long)  Math.pow(10,  (long)Math.log10(Long.parseLong(prop_ville[4])))  ));
+					  context.write(nombre, new IntWritable(Integer.parseInt(prop_ville[4])));
 				  }
 			  }
 		  }
 	  }
   }
   public static class TP3Reducer
-       extends Reducer<Text,IntWritable,Text,IntWritable> {
+       extends Reducer<Text,IntWritable,Text, Text> {
 	  
 	  private IntWritable somme = new IntWritable();
 	  private IntWritable moyenne = new IntWritable();
@@ -89,10 +68,21 @@ public class TP3 {
 	    moyenne.set(sum/occ);
 	    minimum.set(min);
 	    maximum.set(max);
-	    context.write(key, somme);
-	    context.write(key, moyenne);
-	    context.write(key, minimum);
-	    context.write(key, maximum);
+	    
+	    StringBuilder str = new StringBuilder();
+	    str.append(occ);
+	    str.append(" ");
+	    str.append(moyenne);
+	    str.append(" ");
+	    str.append(minimum);
+	    str.append(" ");
+	    str.append(maximum);
+	    str.append(" ");
+	    
+	    
+	    context.write(key, new Text(String.valueOf(str)));
+	    
+	    
     }
   }
   public static void main(String[] args) throws Exception {
