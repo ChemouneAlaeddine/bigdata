@@ -41,7 +41,7 @@
   			<configuration>
   				<archive>
   					<manifest>
-  						<mainClass>TP3</mainClass>
+  						<mainClass>TP6</mainClass>
   					</manifest>
   				</archive>
   			</configuration>

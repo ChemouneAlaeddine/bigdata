@@ -1,0 +1,121 @@
+Country,City,AccentCity,Region,Population,Latitude,Longitude
+ad,aixirvall,Aixirvall,06,,42.4666667,1.5
+ad,aixovall,Aixovall,06,,42.4666667,1.4833333
+ad,andorra,Andorra,07,,42.5,1.5166667
+ad,andorra la vella,Andorra la Vella,07,20430,42.5,1.5166667
+ad,canillo,Canillo,02,3292,42.5666667,1.6
+ad,encamp,Encamp,03,11224,42.5333333,1.5833333
+ad,la massana,La Massana,04,7211,42.55,1.5166667
+ad,les escaldes,Les Escaldes,08,15854,42.5,1.5333333
+ad,ordino,Ordino,05,2553,42.55,1.5333333
+ad,sant julia de loria,Sant Juli� de L�ria,06,8020,42.4666667,1.5
+ae,abu dhabi,Abu Dhabi,01,603687,24.466667,54.366667
+ae,dubai,Dubai,03,1137376,25.258172,55.304717
+ae,sharjah,Sharjah,06,543942,25.35731,55.403304
+af,acin,Acin,18,15098,34.082481,70.668152
+af,anar darreh,Anar Darreh,06,10023,32.758698,61.653969
+af,andarab,Andarab,03,27034,35.633484,69.260195
+ad,la vieja,la Vieja,07,,42.5,1.5166667
+ad,les bons,Les Bons,03,,42.5333333,1.5833333
+af,asadabad,Asadabad,34,48400,34.873113,71.14697
+af,asmar,Asmar,34,15708,35.033328,71.358087
+af,aybak,Aybak,32,47877,36.26468,68.015512
+af,azrow,Azrow,17,12526,34.173553,69.645728
+af,baglan,Baglan,03,108481,36.130684,68.708286
+af,bagrami,Bagrami,13,30256,34.493761,69.274274
+af,baraki barak,Baraki Barak,17,22305,33.9675,68.948611
+af,cah ab,Cah Ab,26,23424,37.397734,69.814644
+af,carikar,Carikar,40,53693,35.016585,69.174011
+af,ciras,Ciras,33,12778,35.416737,65.982341
+af,dawlatabad,Dawlatabad,07,13603,36.432589,64.920713
+af,dawlatabad,Dawlatabad,30,17674,36.98782,66.82066
+af,deh rawud,Deh Rawud,39,25683,32.624131,65.459659
+af,eskasem,Eskasem,01,12120,36.706932,71.570658
+af,farah,Farah,06,43574,32.374508,62.116383
+ad,molleres,Molleres,03,,42.55,1.5833333
+ad,mosquera,Mosquera,03,,42.55,1.5833333
+ad,nagol,Nagol,06,,42.4666667,1.5
+af,gardan diwal,Gardan Diwal,27,6815,34.508977,68.260739
+af,gardez,Gardez,36,103732,33.597439,69.225922
+af,gazni,Gazni,08,143049,33.550833,68.4225
+af,geresk,Geresk,10,43638,31.820894,64.570048
+af,herat,Herat,11,272880,34.348167,62.199673
+af,jalalabad,Jalalabad,18,200389,34.426468,70.45153
+af,jurm,Jurm,01,12121,36.864768,70.834207
+af,kabul,Kabul,13,3043589,34.516667,69.183333
+af,kholm,Kholm,30,64954,36.697362,67.698255
+af,khowst,Khowst,37,96246,33.339512,69.92041
+af,kuhestan,Kuhestan,11,12087,34.653889,61.197778
+af,kusk,Kusk,11,16952,33.29565,61.952206
+af,lar gerd,Lar Gerd,33,11635,35.489361,66.664088
+af,mehtar lam,Mehtar Lam,35,17350,34.671389,70.209444
+af,mirabad,Mirabad,19,14160,30.436244,61.838304
+af,nahrin,Nahrin,03,22389,36.064904,69.13343
+af,nuristan,Nuristan,38,17072,34.95,70.4
+af,orgun,Orgun,29,10665,32.901111,69.152798
+af,pagman,Pagman,13,49173,34.5875,68.953333
+af,panjab,Panjab,05,13471,34.387949,67.023273
+af,qandahar,Qandahar,23,391230,31.613323,65.710126
+af,qarchi gak,Qarchi Gak,30,8942,37.039988,66.788912
+af,qarqin,Qarqin,31,15023,37.404464,66.074375
+af,qunduz,Qunduz,24,161943,36.728955,68.857001
+af,rostaq,Rostaq,26,25644,37.126035,69.83045
+af,rudbar,Rudbar,19,11034,30.15,62.6
+af,sahrak,Sahrak,09,15967,34.107375,64.305199
+af,sangin,Sangin,10,13579,32.072752,64.835903
+af,sar-e pul,Sar-e Pul,33,52138,36.215443,65.932487
+af,sharan,Sharan,29,7368,33.146667,68.791667
+af,shibarghan,Shibarghan,31,55658,36.667567,65.752904
+af,sindand,Sindand,11,29273,33.302944,62.1474
+af,tagab,Tagab,14,6400,34.855007,69.64917
+af,taloqan,Taloqan,26,64275,36.734133,69.533559
+af,taywarah,Taywarah,09,14398,33.521176,64.421156
+af,tir pol,Tir Pol,11,6979,34.594307,61.268951
+af,tokzar,Tokzar,33,12021,35.948308,66.42132
+af,uruzgan,Uruzgan,39,13400,32.927751,66.632534
+af,zaranj,Zaranj,19,33894,30.966667,61.883333
+ag,all saints,All Saints,06,2526,17.05,-61.8
+ag,carlisle,Carlisle,03,831,17.1333333,-61.8
+ag,codrington,Codrington,01,682,17.6333333,-61.8333333
+ag,freetown,Freetown,08,623,17.05,-61.7
+ag,liberta,Liberta,06,1668,17.0333333,-61.7833333
+ag,old road,Old Road,05,623,17.0166667,-61.8333333
+ag,parham,Parham,07,969,17.0833333,-61.7666667
+ag,swetes,Swetes,06,727,17.05,-61.8
+ai,the valley,The Valley,00,1379,18.2166667,-63.05
+al,bajram curri,Bajram Curri,47,7967,42.3572222,20.0730556
+al,ballsh,Ballsh,44,10361,40.5988889,19.7347222
+al,berat,Berat,40,47606,40.7058333,19.9522222
+al,bilisht,Bilisht,46,7114,40.6275,20.99
+al,bulqize,Bulqiz�,41,11212,41.4916667,20.2219444
+al,burrel,Burrel,41,15539,41.6102778,20.0088889
+al,cerrik,C�rrik,43,14269,41.0316667,19.9758333
+al,corovode,�orovod�,40,14046,40.5041667,20.2272222
+al,delvine,Delvin�,51,3916,39.9511111,20.0977778
+al,durres,Durr�s,42,122034,41.3230556,19.4413889
+al,elbasan,Elbasan,43,100903,41.1125,20.0822222
+al,erseke,Ersek�,46,7890,40.3377778,20.6788889
+al,fier,Fier,44,59719,40.7238889,19.5561111
+al,fierze,Fierz�,47,742,42.2647222,20.0269444
+al,fierze,Fierz�,49,742,42.2605556,20.0169444
+al,fushe-arrez,Fush�-Arr�z,49,2438,42.0622222,20.0166667
+al,fushe-kruje,Fush�-Kruj�,42,10458,41.4783333,19.7177778
+al,gjirokaster,Gjirokast�r,45,23437,40.0758333,20.1388889
+al,gramsh,Gramsh,43,11556,40.8697222,20.1844444
+al,himare,Himar�,51,4596,40.1016667,19.7447222
+al,kamze,Kamz�,50,11026,41.3816667,19.7602778
+al,kavaje,Kavaj�,50,29354,41.1855556,19.5569444
+al,kelcyre,K�lcyr�,45,2486,40.3130556,20.1894444
+al,kerrabe,K�rrab�,50,1177,41.2155556,19.9713889
+al,klos,Klos,41,683,41.4844444,20.1080556
+al,konispol,Konispol,51,1349,39.6588889,20.1813889
+al,koplik,Koplik,49,4078,42.2136111,19.4363889
+al,korce,Kor��,46,58259,40.6186111,20.7808333
+al,kraste,Krast�,41,1168,41.4225,20.205
+al,kruje,Kruj�,42,21286,41.5091667,19.7927778
+al,kucove,Ku�ov�,40,18166,40.8002778,19.9166667
+al,kukes,Kuk�s,47,17972,42.0769444,20.4219444
+al,kurbnesh,Kurbnesh,48,1429,41.7797222,20.0836111
+al,lac,La�,48,24825,41.6355556,19.7130556
+al,leskovik,Leskovik,46,2655,40.1513889,20.5972222
+al,lezhe,Lezh�,48,18695,41.7836111,19.6436111
