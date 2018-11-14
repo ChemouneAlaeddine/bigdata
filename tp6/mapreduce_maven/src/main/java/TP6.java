@@ -12,6 +12,7 @@ import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
@@ -27,29 +28,27 @@ public class TP6 {
 	  @Override
       public void setup(Context context){
 		  Configuration conf = context.getConfiguration();
-		  k = conf.getInt("k", 10);
-		  //String dateString = conf.get("date", "1430723161");
+		  k = Integer.parseInt(conf.get("k"));
       }
 	  
 	  public void map(Object key, Text value, Context context
 			  ) throws IOException, InterruptedException {
+		  
 		  String prop_ville[] = value.toString().split(",");
-		  if(!prop_ville[4].isEmpty()) {
-			  if(!prop_ville[4].equals("Population")) {
-				  context.getCounter("WPC", "villes_valides").increment(1);
-				  word.set(prop_ville[2]);
-				  if(TopK.size() < k) {
-					  context.getCounter("WPC", "10_premieres").increment(1);
-					  if(!TopK.containsValue(prop_ville[2]))
-						  TopK.put(Integer.parseInt(prop_ville[4]), prop_ville[2]);
-				  }else {
-					  if(Integer.parseInt(prop_ville[4]) > TopK.firstKey().intValue()) {
-						  context.getCounter("WPC", "nouvelles_villes").increment(1);
-						  TopK.remove(TopK.firstKey());
-						  if(!TopK.containsValue(prop_ville[2]))
-							  TopK.put(Integer.parseInt(prop_ville[4]), prop_ville[2]);
-					  }  
-				  }
+		  
+		  if(!prop_ville[4].isEmpty() && !prop_ville[4].equals("Population")) {
+			  
+			  context.getCounter("WPC", "villes_valides").increment(1);
+			  word.set(prop_ville[2]);
+			  
+			  if(!TopK.containsValue(prop_ville[2])) {
+				  context.getCounter("WPC", "ajout_ville").increment(1);
+				  TopK.put(Integer.parseInt(prop_ville[4]), prop_ville[2]);
+			  }
+		  
+			  if(TopK.size() > k) {
+				  context.getCounter("WPC", "suppression_ville").increment(1);
+				  TopK.remove(TopK.firstKey());
 			  }
 		  }
 		  context.getCounter("WPC", "toutes_les_villes").increment(1);
@@ -58,7 +57,7 @@ public class TP6 {
 	  @Override
       public void cleanup(Context context) throws IOException, InterruptedException{
         for(SortedMap.Entry<Integer, String> entry : TopK.entrySet()){
-        	context.getCounter("WPC", "les_villes_retournées").increment(1);
+        	context.getCounter("WPC", "les_villes_retournées_par_mapper").increment(1);
             context.write(new Text(entry.getValue()), new IntWritable(entry.getKey()));
         }
       }
@@ -71,28 +70,33 @@ public class TP6 {
 	  
 	  public void setup(Context context) {
 		  Configuration conf = context.getConfiguration();
-		  k = conf.getInt("k", 10);
+		  k = Integer.parseInt(conf.get("k"));
 	  }
 	  
 	  public void reduce(Text key, Iterable<IntWritable> values,
                        Context context
                        ) throws IOException, InterruptedException {
 	      for (IntWritable val : values) {
-	    	  /*if(!TopK.containsValue(key.toString()))
-	    		  TopK.put(val.get(), key.toString());
+	    	  TopK.put(val.get(), key.toString());
 	    	  if(TopK.size() > k) {
 				  TopK.remove(TopK.firstKey());
-			  }*/
-	    	  context.write(key, new IntWritable(val.get()));
+			  }
 	      }
-	      /*for (SortedMap.Entry<Integer, String> entry : TopK.entrySet()) {
-	    	  context.write(new Text(entry.getValue()), new IntWritable(entry.getKey()));
-	      }*/
 	  }
+	  
+	  @Override
+      public void cleanup(Context context) throws IOException, InterruptedException{
+    	  for (SortedMap.Entry<Integer, String> entry : TopK.entrySet()) {
+	    	  context.getCounter("WPC", "les_villes_retournées_par_reducer").increment(1);
+	    	  context.write(new Text(entry.getValue()), new IntWritable(entry.getKey()));
+	      }
+      }
   }
 	  
   public static void main(String[] args) throws Exception {
     Configuration conf = new Configuration();
+    Path k = new Path(args[2]);
+    conf.setInt("k", Integer.parseInt(k.toString()));
     Job job = Job.getInstance(conf, "TP6");
     job.setNumReduceTasks(1);
     job.setJarByClass(TP6.class);
@@ -104,7 +108,7 @@ public class TP6 {
     job.setOutputValueClass(IntWritable.class);
     job.setOutputFormatClass(TextOutputFormat.class);
     job.setInputFormatClass(TextInputFormat.class);
-    FileInputFormat.addInputPath(job, new Path(args[0]));
+    SequenceFileInputFormat.addInputPath(job, new Path(args[0]));
     FileOutputFormat.setOutputPath(job, new Path(args[1]));
     System.exit(job.waitForCompletion(true) ? 0 : 1);
   }
