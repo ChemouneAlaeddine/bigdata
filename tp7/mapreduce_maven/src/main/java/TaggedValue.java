@@ -6,11 +6,11 @@ import org.apache.hadoop.io.Writable;
 
 public class TaggedValue implements Writable {
 
-	private type t;
+	private String key;
 	private String value;
 	
-	public TaggedValue(type t, String value) {
-		this.t = t;
+	public TaggedValue(String key, String value) {
+		this.key = key;
 		this.value = value;
 	}
 
@@ -24,12 +24,12 @@ public class TaggedValue implements Writable {
 		
 	}
 
-	public type getT() {
-		return t;
+	public String getT() {
+		return key;
 	}
 
-	public void setT(type t) {
-		this.t = t;
+	public void setT(String t) {
+		this.key = key;
 	}
 
 	public String getValue() {
